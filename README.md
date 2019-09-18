@@ -20,4 +20,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. If any other error messages get from backend, error message is shown for 2 seconds.
 4. After logging in, device numbers are refreshed every 5 seconds.
 5. The circles orbit around the number and the number of circles shown should equal the number of active devices.
-6. Click Logout button to log out.
+6. Click Log out button to log out.
