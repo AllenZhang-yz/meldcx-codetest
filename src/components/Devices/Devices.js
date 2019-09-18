@@ -37,6 +37,7 @@ const Button = styled.button`
   border-radius: 3px;
   margin: 0 10px;
   cursor: pointer;
+  outline: none;
   background-color: ${props => (props.notify ? "#ffffff" : "#000000")};
   color: ${props => (props.notify ? "#000000" : "#ffffff")};
 `;
@@ -63,6 +64,7 @@ class Devices extends PureComponent {
   }
 
   render() {
+    const { notifyHandler, logoutHandler } = this.props;
     return (
       <DevicesPage>
         {this.state.isFetchingDataErr && (
@@ -72,8 +74,10 @@ class Devices extends PureComponent {
           <CirclingBall number={this.state.deviceNumber} />
         </RepositionCirclingBall>
         <Footer>
-          <Button notify>notify</Button>
-          <Button onClick={this.props.logoutHandler}>log out</Button>
+          <Button notify onClick={notifyHandler}>
+            notify
+          </Button>
+          <Button onClick={logoutHandler}>log out</Button>
         </Footer>
       </DevicesPage>
     );
@@ -81,7 +85,8 @@ class Devices extends PureComponent {
 }
 
 Devices.propTypes = {
-  logoutHandler: PropTypes.func
+  logoutHandler: PropTypes.func,
+  notifyHandler: PropTypes.func
 };
 
 export default Devices;

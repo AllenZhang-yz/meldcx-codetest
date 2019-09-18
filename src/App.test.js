@@ -1,9 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import Enzyme, { mount } from "enzyme";
+import { MemoryRouter } from "react-router-dom";
+import Adapter from "enzyme-adapter-react-16";
+import App from "./App";
+import Login from "./components/Login";
+import Devices from "./components/Devices";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+Enzyme.configure({ adapter: new Adapter() });
+
+describe("App", () => {
+  const wrapper = mount(
+    <MemoryRouter initialEntries={["/"]}>
+      <App />
+    </MemoryRouter>
+  );
+
+  it("It should render Login without errors for the initial router", () => {
+    expect(wrapper.find(Login).length).toBe(1);
+    expect(wrapper.find(Devices).length).toBe(0);
+  });
 });

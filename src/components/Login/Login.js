@@ -112,7 +112,7 @@ const Login = props => {
           <SubmitButton onClick={submitHandler}>log in</SubmitButton>
         </LoginForm>
         {isValid === false && <ErrorMsg>Incorrect Password</ErrorMsg>}
-        {isLoginErr && isValid && (
+        {isLoginErr && isValid === true && (
           <ErrorMsg>Something's wrong with backend</ErrorMsg>
         )}
       </LoginContainer>

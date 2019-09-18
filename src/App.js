@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     email: "",
     password: "",
-    isValid: "",
+    isValid: undefined,
     token: "",
     redirect: false,
     isLoginErr: false
@@ -29,7 +29,9 @@ class App extends Component {
     e.preventDefault();
     this.state.password === LOGIN_PASSCODE
       ? this.setState({ isValid: true })
-      : this.setState({ isValid: false });
+      : this.setState({ isValid: false }, () =>
+          setTimeout(() => this.setState({ isValid: undefined }), 2000)
+        );
 
     const authData = {
       email: this.state.email,
@@ -42,13 +44,11 @@ class App extends Component {
       })
       .catch(err => {
         console.log(err);
-        this.setState({ isLoginErr: true });
+        this.setState({ isLoginErr: true }, () =>
+          setTimeout(() => this.setState({ isLoginErr: false }), 2000)
+        );
       });
   };
-
-  // componentDidUpdate() {
-  //   setTimeout(() => this.setState({ isLoginErr: false }), 5000);
-  // }
 
   logoutHandler = () => {
     this.setState({
@@ -59,6 +59,23 @@ class App extends Component {
       redirect: false,
       isLoginErr: false
     });
+  };
+
+  notifyHandler = () => {
+    const notifyHeader = {
+      Authorization: this.state.token
+    };
+    console.log(this.state.token);
+    const notifyData = {
+      name: "Allen Zhang",
+      email: "allen.zhang018@gmail.com",
+      repo: "www.github.com",
+      message: "Hi, I am almost finished, I am testing this button"
+    };
+    axios
+      .post("/notify", notifyData, notifyHeader)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -85,7 +102,10 @@ class App extends Component {
           token={this.state.token}
           render={() => (
             <Suspense fallback={<div>Loading...</div>}>
-              <Devices logoutHandler={this.logoutHandler} />
+              <Devices
+                logoutHandler={this.logoutHandler}
+                notifyHandler={this.notifyHandler}
+              />
             </Suspense>
           )}
         />
