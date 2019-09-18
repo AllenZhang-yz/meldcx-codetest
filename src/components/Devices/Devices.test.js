@@ -1,7 +1,6 @@
 import React from "react";
 import Enzyme, { mount, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import sinon from "sinon";
 import Devices from "./Devices";
 import CirclingBall from "../CirclingBall";
 import ErrorMsg from "../ErrorMsg";

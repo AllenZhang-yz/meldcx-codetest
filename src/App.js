@@ -63,7 +63,7 @@ class App extends Component {
 
   notifyHandler = () => {
     const notifyHeader = {
-      Authorization: this.state.token
+      headers: { Authorization: this.state.token }
     };
     console.log(this.state.token);
     const notifyData = {
