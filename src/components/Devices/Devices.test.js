@@ -1,6 +1,7 @@
 import React from "react";
-import Enzyme, { mount } from "enzyme";
+import Enzyme, { mount, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import sinon from "sinon";
 import Devices from "./Devices";
 import CirclingBall from "../CirclingBall";
 import ErrorMsg from "../ErrorMsg";
@@ -23,7 +24,7 @@ describe("Devices", () => {
     expect(wrapper.length).toBe(1);
   });
 
-  it("It should render error msg when fetching data failure", () => {
+  it("It should render error msg when can not fetch data", () => {
     component.setState({ isFetchingDataErr: true });
     const wrapper = component.find(ErrorMsg);
     expect(wrapper.length).toBe(1);
