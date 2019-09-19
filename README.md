@@ -26,10 +26,7 @@ If "Something's wrong with the backend" message is shown, the login request is b
 4. After logging in, device numbers are refreshed every 5 seconds.
 5. The circles orbit around the number and the number of circles shown should equal the number of active devices.
 6. Click Log out button to log out.
-
-### Issue with this App
-
-There is one remaining issue with the notify button, I have started a post request with the designated infomation and end point , but still get 401 back. I'm still trying to fix it.
+7. Notify MeldCX
 
 ### Skills used in this App
 
