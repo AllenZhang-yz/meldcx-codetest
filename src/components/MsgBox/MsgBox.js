@@ -10,6 +10,7 @@ const MessageBox = styled.div`
   padding: 6px;
   color: #ffffff;
   font-size: 12px;
+  width: 120px;
 `;
 
 const ErrorMsg = props => <MessageBox>{props.children}</MessageBox>;
