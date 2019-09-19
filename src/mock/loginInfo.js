@@ -1,1 +1,1 @@
-export const LOGIN_PASSWORD = "meld123";
+export const LOGIN_PASSWORD = 'meld123'

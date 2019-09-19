@@ -56,7 +56,7 @@ const DeviceNumWords = styled.div`
 const circlelingBall = props => {
   const { number } = props;
   const angle = 360 / number;
-  let balls = [];
+  const balls = [];
   for (let i = 0; i < number; i++) {
     const eachAngle = i * angle;
     balls.push(

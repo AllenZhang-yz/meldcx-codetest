@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### This project is deployed on firebase
+
+Please visit https://meldcx-codetest.firebaseapp.com to check, use any email and password "meld123".
+If "Something's wrong with the backend" message is shown, the login request is blocked because the browser thinks this page is fetching request from unauthenticated sources. If you are using Chrome, to the right side of the address bar, there's a shield like icon (with red cross), click it , and click "Load unsafe scripts".
+
 ### Run this project locally
 
 1. git clone https://github.com/AllenZhang-yz/meldcx-codetest.git
@@ -21,3 +26,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. After logging in, device numbers are refreshed every 5 seconds.
 5. The circles orbit around the number and the number of circles shown should equal the number of active devices.
 6. Click Log out button to log out.
+
+### Issue with this App
+
+There is one remaining issue with the notify button, I have started a post request with the designated infomation and end point , but still get 401 back. I'm still trying to fix it.
+
+### Skills used in this App
+
+React, React-Router PropTypes Lazyloading axios Jest Enzyme Firebase
