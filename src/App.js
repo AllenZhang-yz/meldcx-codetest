@@ -1,5 +1,6 @@
 import React, { Fragment, Component, Suspense } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { Loader } from 'semantic-ui-react';
 import { LOGIN_PASSWORD } from './mock/loginInfo';
 import Login from './components/Login';
 import { userService } from './services/user.service';
@@ -13,6 +14,7 @@ class App extends Component {
     token: '',
     redirect: false,
     isLoginErr: false,
+    notified: false,
   };
 
   emailInputHandler = e => {
@@ -68,11 +70,16 @@ class App extends Component {
       name: 'Allen Zhang',
       email: 'allen.zhang018@gmail.com',
       repoUrl: 'https://github.com/AllenZhang-yz/meldcx-codetest.git',
-      message: 'Hi, I am almost there, I really wanna join MeldCX. ',
+      message: 'Hi, I am almost there, I really wanna join MeldCX. Please!!! ',
     };
     userService
       .notify(notifyData, notifyHeader)
-      .then(res => console.log('res', res))
+      .then(res => {
+        console.log('res', res);
+        this.setState({ notified: true }, () =>
+          setTimeout(() => this.setState({ notified: false }), 2000)
+        );
+      })
       .catch(err => console.log('err', err));
   };
 
@@ -99,10 +106,11 @@ class App extends Component {
           path="/devices"
           token={this.state.token}
           render={() => (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader active inline="centered" />}>
               <Devices
                 logoutHandler={this.logoutHandler}
                 notifyHandler={this.notifyHandler}
+                notified={this.state.notified}
               />
             </Suspense>
           )}

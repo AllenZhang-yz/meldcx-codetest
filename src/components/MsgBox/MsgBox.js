@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const ErrorMessage = styled.div`
-  background-color: #ed8291;
+const MessageBox = styled.div`
+  background-color: ${props => (props.notify ? '#42db6b' : '#ed8291')};
   border-radius: 3px;
-  border: 1px solid #e01935;
+
+  border: 1px solid ${props => (props.notify ? '#0ba133' : '#e01935')};
   width: 150px;
   margin: 10px auto 0 auto;
   padding: 6px;
@@ -13,10 +14,10 @@ const ErrorMessage = styled.div`
   font-size: 12px;
 `;
 
-const ErrorMsg = props => <ErrorMessage>{props.children}</ErrorMessage>;
+const ErrorMsg = props => <MessageBox>{props.children}</MessageBox>;
 
 ErrorMsg.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default ErrorMsg;
+export default MessageBox;

@@ -3,7 +3,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Devices from './Devices';
 import CirclingBall from '../CirclingBall';
-import ErrorMsg from '../ErrorMsg';
+import MsgBox from '../MsgBox';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -25,7 +25,7 @@ describe('Devices', () => {
 
   it('It should render error msg when can not fetch data', () => {
     component.setState({ isFetchingDataErr: true });
-    const wrapper = component.find(ErrorMsg);
+    const wrapper = component.find(MsgBox);
     expect(wrapper.length).toBe(1);
   });
 });

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import CirclingBall from '../CirclingBall';
-import ErrorMsg from '../ErrorMsg';
+import MsgBox from '../MsgBox';
 import { userService } from '../../services/user.service';
 
 const DevicesPage = styled.div`
@@ -42,6 +42,9 @@ const Button = styled.button`
   color: ${props => (props.notify ? '#000000' : '#ffffff')};
 `;
 
+const NotifiedMsgWrapper = styled.div`
+  margin-top: 220px;
+`;
 class Devices extends PureComponent {
   state = {
     deviceNumber: 0,
@@ -64,15 +67,18 @@ class Devices extends PureComponent {
   }
 
   render() {
-    const { notifyHandler, logoutHandler } = this.props;
+    const { notifyHandler, logoutHandler, notified } = this.props;
     return (
       <DevicesPage>
-        {this.state.isFetchingDataErr && (
-          <ErrorMsg>Could not get data</ErrorMsg>
-        )}
+        {this.state.isFetchingDataErr && <MsgBox>Could not get data</MsgBox>}
         <RepositionCirclingBall>
           <CirclingBall number={this.state.deviceNumber} />
         </RepositionCirclingBall>
+        {notified && (
+          <NotifiedMsgWrapper>
+            <MsgBox notify>You have notified MeldCX successfully</MsgBox>
+          </NotifiedMsgWrapper>
+        )}
         <Footer>
           <Button notify onClick={notifyHandler}>
             notify

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Email } from 'styled-icons/material/Email';
 import { Exclamation } from 'styled-icons/evil/Exclamation';
 import PropTypes from 'prop-types';
-import ErrorMsg from '../ErrorMsg';
+import MsgBox from '../MsgBox';
 
 const LoginPage = styled.div`
   background-color: grey;
@@ -111,9 +111,9 @@ const Login = props => {
 
           <SubmitButton onClick={submitHandler}>log in</SubmitButton>
         </LoginForm>
-        {isValid === false && <ErrorMsg>Incorrect Password</ErrorMsg>}
+        {isValid === false && <MsgBox>Incorrect Password</MsgBox>}
         {isLoginErr && isValid === true && (
-          <ErrorMsg>Something's wrong with backend</ErrorMsg>
+          <MsgBox>Something's wrong with backend</MsgBox>
         )}
       </LoginContainer>
     </LoginPage>
