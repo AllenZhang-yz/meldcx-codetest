@@ -48,7 +48,7 @@ const NotifiedMsgWrapper = styled.div`
 class Devices extends PureComponent {
   state = {
     deviceNumber: 0,
-    isFetchingDataErr: false,
+    isFetchingDataErr: false
   };
 
   getDevicesInfo = () => {
@@ -93,6 +93,7 @@ class Devices extends PureComponent {
 Devices.propTypes = {
   logoutHandler: PropTypes.func,
   notifyHandler: PropTypes.func,
+  notified: PropTypes.bool
 };
 
 export default Devices;

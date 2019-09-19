@@ -14,7 +14,7 @@ class App extends Component {
     token: '',
     redirect: false,
     isLoginErr: false,
-    notified: false,
+    notified: false
   };
 
   emailInputHandler = e => {
@@ -36,7 +36,7 @@ class App extends Component {
         );
     const authData = {
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
     userService
       .login(authData)
@@ -59,23 +59,23 @@ class App extends Component {
       token: '',
       redirect: false,
       isLoginErr: false,
+      notified: false
     });
   };
 
   notifyHandler = () => {
     const notifyHeader = {
-      headers: { Authorization: `Bearer ${this.state.token}` },
+      headers: { Authorization: `Bearer ${this.state.token}` }
     };
     const notifyData = {
       name: 'Allen Zhang',
       email: 'allen.zhang018@gmail.com',
       repoUrl: 'https://github.com/AllenZhang-yz/meldcx-codetest.git',
-      message: 'Hi, I am almost there, I really wanna join MeldCX. Please!!! ',
+      message: 'Hi, I am almost there, I really wanna join MeldCX. Please!!! '
     };
     userService
       .notify(notifyData, notifyHeader)
       .then(res => {
-        console.log('res', res);
         this.setState({ notified: true }, () =>
           setTimeout(() => this.setState({ notified: false }), 2000)
         );
