@@ -61,15 +61,15 @@ class App extends Component {
   };
 
   notifyHandler = () => {
-    const notifyHeader = {
+    const notifyHeader = JSON.stringify({
       headers: `Bearer ${this.state.token}`
-    };
-    const notifyData = {
+    });
+    const notifyData = JSON.stringify({
       name: "Allen Zhang",
       email: "allen.zhang018@gmail.com",
-      repoUrl: "www.github.com",
-      message: "Hi, I am almost finished, I am testing this button"
-    };
+      repoUrl: "https://github.com/AllenZhang-yz/meldcx-codetest.git",
+      message: "Hi, I am almost there, I really wanna join MeldCX. "
+    });
     userService
       .notify(notifyHeader, notifyData)
       .then(res => console.log("res", res))
