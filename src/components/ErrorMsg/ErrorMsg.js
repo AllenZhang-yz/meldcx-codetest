@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ErrorMessage = styled.div`
   background-color: #ed8291;
@@ -16,7 +16,7 @@ const ErrorMessage = styled.div`
 const ErrorMsg = props => <ErrorMessage>{props.children}</ErrorMessage>;
 
 ErrorMsg.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 
 export default ErrorMsg;

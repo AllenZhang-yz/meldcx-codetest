@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import styled, { keyframes } from "styled-components";
-import PropTypes from "prop-types";
+import React, { Fragment } from 'react';
+import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const CirclingBallWraper = styled.div`
   position: absolute;
@@ -80,7 +80,7 @@ const circlelingBall = props => {
 };
 
 circlelingBall.propTypes = {
-  number: PropTypes.number
+  number: PropTypes.number,
 };
 
 export default circlelingBall;

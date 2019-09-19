@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import CirclingBall from "../CirclingBall";
-import ErrorMsg from "../ErrorMsg";
-import { userService } from "../../services/user.service";
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import CirclingBall from '../CirclingBall';
+import ErrorMsg from '../ErrorMsg';
+import { userService } from '../../services/user.service';
 
 const DevicesPage = styled.div`
   background-color: #f07205;
@@ -38,14 +38,14 @@ const Button = styled.button`
   margin: 0 10px;
   cursor: pointer;
   outline: none;
-  background-color: ${props => (props.notify ? "#ffffff" : "#000000")};
-  color: ${props => (props.notify ? "#000000" : "#ffffff")};
+  background-color: ${props => (props.notify ? '#ffffff' : '#000000')};
+  color: ${props => (props.notify ? '#000000' : '#ffffff')};
 `;
 
 class Devices extends PureComponent {
   state = {
     deviceNumber: 0,
-    isFetchingDataErr: false
+    isFetchingDataErr: false,
   };
 
   getDevicesInfo = () => {
@@ -86,7 +86,7 @@ class Devices extends PureComponent {
 
 Devices.propTypes = {
   logoutHandler: PropTypes.func,
-  notifyHandler: PropTypes.func
+  notifyHandler: PropTypes.func,
 };
 
 export default Devices;

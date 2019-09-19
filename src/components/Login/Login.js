@@ -1,9 +1,9 @@
-import React, { memo } from "react";
-import styled from "styled-components";
-import { Email } from "styled-icons/material/Email";
-import { Exclamation } from "styled-icons/evil/Exclamation";
-import PropTypes from "prop-types";
-import ErrorMsg from "../ErrorMsg";
+import React, { memo } from 'react';
+import styled from 'styled-components';
+import { Email } from 'styled-icons/material/Email';
+import { Exclamation } from 'styled-icons/evil/Exclamation';
+import PropTypes from 'prop-types';
+import ErrorMsg from '../ErrorMsg';
 
 const LoginPage = styled.div`
   background-color: grey;
@@ -83,7 +83,7 @@ const Login = props => {
     email,
     password,
     isValid,
-    isLoginErr
+    isLoginErr,
   } = props;
   return (
     <LoginPage>
@@ -126,7 +126,7 @@ Login.propTypes = {
   submitHandler: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
-  isLoginErr: PropTypes.bool
+  isLoginErr: PropTypes.bool,
 };
 
 export default memo(Login);

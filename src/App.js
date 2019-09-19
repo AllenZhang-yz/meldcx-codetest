@@ -1,18 +1,18 @@
-import React, { Fragment, Component, Suspense } from "react";
-import { Route, Redirect } from "react-router-dom";
-import { LOGIN_PASSWORD } from "./mock/loginInfo";
-import Login from "./components/Login";
-import { userService } from "./services/user.service";
-const Devices = React.lazy(() => import("./components/Devices"));
+import React, { Fragment, Component, Suspense } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { LOGIN_PASSWORD } from './mock/loginInfo';
+import Login from './components/Login';
+import { userService } from './services/user.service';
+const Devices = React.lazy(() => import('./components/Devices'));
 
 class App extends Component {
   state = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     isValid: undefined,
-    token: "",
+    token: '',
     redirect: false,
-    isLoginErr: false
+    isLoginErr: false,
   };
 
   emailInputHandler = e => {
@@ -34,7 +34,7 @@ class App extends Component {
         );
     const authData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
     userService
       .login(authData)
@@ -51,29 +51,29 @@ class App extends Component {
 
   logoutHandler = () => {
     this.setState({
-      email: "",
-      password: "",
-      isValid: "",
-      token: "",
+      email: '',
+      password: '',
+      isValid: '',
+      token: '',
       redirect: false,
-      isLoginErr: false
+      isLoginErr: false,
     });
   };
 
   notifyHandler = () => {
     const notifyHeader = JSON.stringify({
-      headers: `Bearer ${this.state.token}`
+      headers: `Bearer ${this.state.token}`,
     });
     const notifyData = JSON.stringify({
-      name: "Allen Zhang",
-      email: "allen.zhang018@gmail.com",
-      repoUrl: "https://github.com/AllenZhang-yz/meldcx-codetest.git",
-      message: "Hi, I am almost there, I really wanna join MeldCX. "
+      name: 'Allen Zhang',
+      email: 'allen.zhang018@gmail.com',
+      repoUrl: 'https://github.com/AllenZhang-yz/meldcx-codetest.git',
+      message: 'Hi, I am almost there, I really wanna join MeldCX. ',
     });
     userService
       .notify(notifyHeader, notifyData)
-      .then(res => console.log("res", res))
-      .catch(err => console.log("err", err));
+      .then(res => console.log('res', res))
+      .catch(err => console.log('err', err));
   };
 
   render() {
