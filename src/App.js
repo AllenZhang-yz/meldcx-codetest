@@ -4,6 +4,7 @@ import { Loader } from 'semantic-ui-react';
 import { LOGIN_PASSWORD } from './mock/loginInfo';
 import Login from './components/Login';
 import { userService } from './services/user.service';
+import { notifyData } from './const/index';
 const Devices = React.lazy(() => import('./components/Devices'));
 
 class App extends Component {
@@ -66,12 +67,6 @@ class App extends Component {
   notifyHandler = () => {
     const notifyHeader = {
       headers: { Authorization: `Bearer ${this.state.token}` }
-    };
-    const notifyData = {
-      name: 'Allen Zhang',
-      email: 'allen.zhang018@gmail.com',
-      repoUrl: 'https://github.com/AllenZhang-yz/meldcx-codetest.git',
-      message: 'Hi, I am almost there, I really wanna join MeldCX. Please!!! '
     };
     userService
       .notify(notifyData, notifyHeader)
