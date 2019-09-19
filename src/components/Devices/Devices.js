@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
-import axios from "../../axios";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import CirclingBall from "../CirclingBall";
 import ErrorMsg from "../ErrorMsg";
+import { userService } from "../../services/user.service";
 
 const DevicesPage = styled.div`
   background-color: #f07205;
@@ -49,8 +49,8 @@ class Devices extends PureComponent {
   };
 
   getDevicesInfo = () => {
-    axios
-      .get("/devices")
+    userService
+      .getDevices()
       .then(res => this.setState({ deviceNumber: res.data.devices.length }))
       .catch(err => {
         console.log(err);

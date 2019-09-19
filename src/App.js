@@ -1,8 +1,8 @@
 import React, { Fragment, Component, Suspense } from "react";
 import { Route, Redirect } from "react-router-dom";
-import axios from "./axios";
-import { LOGIN_PASSCODE } from "./const";
+import { LOGIN_PASSWORD } from "./mock/loginInfo";
 import Login from "./components/Login";
+import { userService } from "./services/user.service";
 const Devices = React.lazy(() => import("./components/Devices"));
 
 class App extends Component {
@@ -27,18 +27,17 @@ class App extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    this.state.password === LOGIN_PASSCODE
+    this.state.password === LOGIN_PASSWORD
       ? this.setState({ isValid: true })
       : this.setState({ isValid: false }, () =>
           setTimeout(() => this.setState({ isValid: undefined }), 2000)
         );
-
     const authData = {
       email: this.state.email,
       password: this.state.password
     };
-    axios
-      .post("/login", authData)
+    userService
+      .login(authData)
       .then(({ data }) => {
         this.setState({ token: data, redirect: true });
       })
@@ -63,19 +62,18 @@ class App extends Component {
 
   notifyHandler = () => {
     const notifyHeader = {
-      headers: { Authorization: this.state.token }
+      headers: `Bearer ${this.state.token}`
     };
-    console.log(this.state.token);
     const notifyData = {
       name: "Allen Zhang",
       email: "allen.zhang018@gmail.com",
-      repo: "www.github.com",
+      repoUrl: "www.github.com",
       message: "Hi, I am almost finished, I am testing this button"
     };
-    axios
-      .post("/notify", notifyData, notifyHeader)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    userService
+      .notify(notifyHeader, notifyData)
+      .then(res => console.log("res", res))
+      .catch(err => console.log("err", err));
   };
 
   render() {
