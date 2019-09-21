@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Login from './Login';
-import ErrorMsg from '../ErrorMsg';
+import MsgBox from '../MsgBox';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -34,13 +34,13 @@ describe('Login', () => {
 
   it('It should render error msg when password is invalid', () => {
     component.setProps({ isValid: false });
-    const wrapper = component.find(ErrorMsg);
+    const wrapper = component.find(MsgBox);
     expect(wrapper.length).toBe(1);
   });
 
   it('It should render error msg when password is valid but get some other error message from backend', () => {
     component.setProps({ isValid: true, isLoginErr: true });
-    const wrapper = component.find(ErrorMsg);
+    const wrapper = component.find(MsgBox);
     expect(wrapper.length).toBe(1);
   });
 });
