@@ -46,10 +46,13 @@ const NotifiedMsgWrapper = styled.div`
   margin-top: 220px;
 `;
 class Devices extends PureComponent {
-  state = {
-    deviceNumber: 0,
-    isFetchingDataErr: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      deviceNumber: 0,
+      isFetchingDataErr: false
+    };
+  }
 
   getDevicesInfo = () => {
     userService

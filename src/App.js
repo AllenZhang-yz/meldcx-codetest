@@ -8,15 +8,18 @@ import { notifyData } from './const/index';
 const Devices = React.lazy(() => import('./components/Devices'));
 
 class App extends Component {
-  state = {
-    email: '',
-    password: '',
-    isValid: undefined,
-    token: '',
-    redirect: false,
-    isLoginErr: false,
-    notified: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      isValid: undefined,
+      token: '',
+      redirect: false,
+      isLoginErr: false,
+      notified: false
+    };
+  }
 
   emailInputHandler = e => {
     const email = e.target.value.trim();
