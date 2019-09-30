@@ -14,7 +14,7 @@ class App extends Component {
       email: '',
       password: '',
       isValid: undefined,
-      token: '',
+      // token: '',
       redirect: false,
       isLoginErr: false,
       notified: false
@@ -45,7 +45,9 @@ class App extends Component {
     userService
       .login(authData)
       .then(({ data }) => {
-        this.setState({ token: data, redirect: true });
+        localStorage.setItem('jwt_token', data);
+
+        this.setState({ redirect: true });
       })
       .catch(err => {
         console.log(err);
@@ -56,15 +58,8 @@ class App extends Component {
   };
 
   logoutHandler = () => {
-    this.setState({
-      email: '',
-      password: '',
-      isValid: '',
-      token: '',
-      redirect: false,
-      isLoginErr: false,
-      notified: false
-    });
+    localStorage.removeItem('jwt_token');
+    this.setState({ redirect: false });
   };
 
   notifyHandler = () => {
@@ -102,7 +97,6 @@ class App extends Component {
         />
         <Route
           path="/devices"
-          token={this.state.token}
           render={() => (
             <Suspense fallback={<Loader active inline="centered" />}>
               <Devices
